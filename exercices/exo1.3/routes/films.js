@@ -56,7 +56,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const indexOfFilmFound = FILMS.findIndex((film) => film.id == req.params.id);
 
-  if (indexOfFilmFound < 0) return res.json('Resource not found');
+  if (indexOfFilmFound < 0 || indexOfFilmFound>FILMS.length) return res.sendStatus(404);
 
   return res.json(FILMS[indexOfFilmFound]);
 });
@@ -70,6 +70,13 @@ router.post('/', (req, res) => {
   const budget = req?.body?.budget?.length !== 0 ? req.body.budget : undefined;
 
   console.log('POST /pizzas');
+
+  for(let i = 0; i<FILMS.length; i++){
+    if(FILMS[i].titre==titre){
+      return res.sendStatus(409);
+    }
+  }
+
 
   if (!titre || !link || !duration || !budget ) return res.sendStatus(400); // error code '400 Bad request'
 
