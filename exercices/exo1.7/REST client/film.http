@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3000
+
+### GET
+
+GET {{baseUrl}}/films
+
+
+
+
+### Create another film
+POST {{baseUrl}}/films/
+Content-Type: application/json
+
+{
+    "title":"Dunkirmkesl",
+    "duration": 1,
+    "budget": 11,
+    "link":"findIt.com"
+}
