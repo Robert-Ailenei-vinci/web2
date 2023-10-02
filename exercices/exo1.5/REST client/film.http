@@ -6,7 +6,7 @@ POST {{baseUrl}}/films/
 Content-Type: application/json
 
 {
-    "title":"Dunkir",
+    "title":"Dunkirke",
     "duration": 1,
     "budget": 11,
     "link":"findIt.com"

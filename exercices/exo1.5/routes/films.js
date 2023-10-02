@@ -83,9 +83,15 @@ router.post('/', (req, res) => {
     link, duration,budget
   };
 
+  for(let i = 0; i<FILMS.length; i++){
+    if(FILMS[i].titre==titre){
+      return res.sendStatus(409);
+    }
+  }
   FILMS.push(newFilm);
 
   res.json(newFilm);
+  
 });
 
 
