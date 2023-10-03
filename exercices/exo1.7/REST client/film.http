@@ -12,7 +12,7 @@ POST {{baseUrl}}/films/
 Content-Type: application/json
 
 {
-    "title":"Dunkirmkesl",
+    "title":"Le mhe Titanesque",
     "duration": 1,
     "budget": 11,
     "link":"findIt.com"

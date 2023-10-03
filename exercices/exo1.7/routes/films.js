@@ -78,18 +78,29 @@ router.post('/', (req, res) => {
 
   if (!title || !link || !duration || !budget) return res.sendStatus(400);
 
-  const films = parse(jsonDbPath, FILMS);
 
-  const existingFilm = films.find(
-    (film) => film.title.toLowerCase() === title.toLowerCase()
+  const existingFilm = FILMS.find(
+    (film) => film.titre.toLowerCase() === title.toLowerCase()
   );
   if (existingFilm) return res.sendStatus(409);
 
+  const films = parse(jsonDbPath, FILMS);
+
+  
+
   const lastItemIndex = films?.length !== 0 ? films.length - 1 : undefined;
   const lastId = lastItemIndex !== undefined ? films[lastItemIndex]?.id : 0;
-  const nextId = lastId + 1;
+  const id = lastId + 1;
 
-  const newFilm = { id: nextId, title, link, duration, budget };
+  const newFilm = { id, title, link, duration, budget };
+
+  for (let i = 0; i < FILMS.length; i++) {
+    if(newFilm.title===FILMS[i].titre){
+      return res.sendStatus(409);
+    }
+    
+  }
+
 
   films.push(newFilm);
 
